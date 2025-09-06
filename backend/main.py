@@ -1,3 +1,23 @@
+Try 'uvicorn --help' for help.
+Error: Invalid value for '--port': '$PORT' is not a valid integer.
+Usage: uvicorn [OPTIONS] APP
+Try 'uvicorn --help' for help.
+Error: Invalid value for '--port': '$PORT' is not a valid integer.
+Usage: uvicorn [OPTIONS] APP
+Try 'uvicorn --help' for help.
+Error: Invalid value for '--port': '$PORT' is not a valid integer.
+Usage: uvicorn [OPTIONS] APP
+Try 'uvicorn --help' for help.
+Error: Invalid value for '--port': '$PORT' is not a valid integer.
+Usage: uvicorn [OPTIONS] APP
+Try 'uvicorn --help' for help.
+Error: Invalid value for '--port': '$PORT' is not a valid integer.
+Usage: uvicorn [OPTIONS] APP
+Try 'uvicorn --help' for help.
+Error: Invalid value for '--port': '$PORT' is not a valid integer.
+Usage: uvicorn [OPTIONS] APP
+Try 'uvicorn --help' for help.
+Error: Invalid value for '--port': '$PORT' is not a valid integer.
 from fastapi import FastAPI, HTTPException, Depends, status, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -712,4 +732,5 @@ async def startup_event():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port, reload=True)
