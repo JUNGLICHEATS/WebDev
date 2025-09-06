@@ -1,12 +1,8 @@
-# Ignore Docker files to force Python runtime
+# Ignore Docker files
 Dockerfile
 .dockerignore
 docker-compose.yml
 docker-compose.yaml
-
-# Ignore other build files
-nixpacks.toml
-railway.json
 
 # Ignore Python cache
 __pycache__/

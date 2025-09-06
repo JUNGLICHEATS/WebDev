@@ -9,7 +9,7 @@ import threading
 import time
 import os
 import sys
-from pathlib import Path
+from pathlib import Path\\
 
 def run_command(command, cwd=None, shell=True):
     """Run a command in a subprocess"""
