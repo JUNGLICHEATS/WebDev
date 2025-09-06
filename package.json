@@ -1,0 +1,17 @@
+{
+  "name": "WebDev",
+  "version": "1.0.0",
+  "description": "LLM Web App with React frontend and FastAPI backend",
+  "scripts": {
+    "dev": "python start.py",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && pip install -r requirements.txt",
+    "setup": "npm run install:frontend && npm run install:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "start:backend": "cd backend && uvicorn main:app --reload --port 8000",
+    "start:frontend": "cd frontend && npm run dev"
+  },
+  "keywords": ["llm", "react", "fastapi", "vercel", "railway"],
+  "author": "JUNGLICHEATS",
+  "license": "MIT"
+}
