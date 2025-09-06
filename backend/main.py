@@ -50,7 +50,7 @@ app = FastAPI(title="Authentication API", version="1.0.0")
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*", "https://healthcheck.railway.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -641,7 +641,25 @@ async def logout():
 # Health check endpoint
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "timestamp": datetime.utcnow()}
+    try:
+        # Check if database is connected
+        if client:
+            # Simple ping to check database connection
+            await client.admin.command('ping')
+        
+        return {
+            "status": "healthy", 
+            "timestamp": datetime.utcnow().isoformat(),
+            "database": "connected"
+        }
+    except Exception as e:
+        # Still return healthy even if DB is down for basic health checks
+        return {
+            "status": "healthy", 
+            "timestamp": datetime.utcnow().isoformat(),
+            "database": "disconnected",
+            "note": "Basic health check passed"
+        }
 
 # Debug endpoint for OAuth configuration
 @app.get("/api/debug/oauth")
@@ -733,4 +751,5 @@ async def startup_event():
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port, reload=True)
+    # Bind to both IPv4 and IPv6 for Railway v2 compatibility
+    uvicorn.run(app, host="::", port=port, reload=True)
