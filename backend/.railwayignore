@@ -1,0 +1,8 @@
+# Ignore Docker files to force Python runtime
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.yaml
+
+# Ignore other build files
+nixpacks.toml
