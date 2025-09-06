@@ -10,3 +10,4 @@ python-jose[cryptography]==3.3.0
 authlib==1.2.1
 boto3==1.34.0
 certifi==2023.11.17
+itsdangerous==2.1.2
