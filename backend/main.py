@@ -641,25 +641,7 @@ async def logout():
 # Health check endpoint
 @app.get("/health")
 async def health_check():
-    try:
-        # Check if database is connected
-        if client:
-            # Simple ping to check database connection
-            await client.admin.command('ping')
-        
-        return {
-            "status": "healthy", 
-            "timestamp": datetime.utcnow().isoformat(),
-            "database": "connected"
-        }
-    except Exception as e:
-        # Still return healthy even if DB is down for basic health checks
-        return {
-            "status": "healthy", 
-            "timestamp": datetime.utcnow().isoformat(),
-            "database": "disconnected",
-            "note": "Basic health check passed"
-        }
+    return {"status": "healthy", "timestamp": datetime.utcnow().isoformat()}
 
 # Debug endpoint for OAuth configuration
 @app.get("/api/debug/oauth")
@@ -751,5 +733,4 @@ async def startup_event():
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))
-    # Bind to both IPv4 and IPv6 for Railway v2 compatibility
-    uvicorn.run(app, host="::", port=port, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=port, reload=True)
