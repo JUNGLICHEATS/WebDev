@@ -1,7 +1,6 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { Brain, Shield, Zap, Users, ArrowRight, CheckCircle } from 'lucide-react'
+import { Brain, Shield, Zap, Users, ArrowRight } from 'lucide-react'
 
 export default function Home() {
   const { isAuthenticated } = useAuth()

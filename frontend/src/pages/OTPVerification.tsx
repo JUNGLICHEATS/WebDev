@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { useToast } from '../contexts/ToastContext'
@@ -96,7 +96,7 @@ export default function OTPVerification() {
     setIsLoading(true)
 
     try {
-      const response = await verifyOTP({
+      await verifyOTP({
         email,
         otp: otpString
       })

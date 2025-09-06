@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { useToast } from '../contexts/ToastContext'
@@ -44,7 +44,7 @@ export default function SignUp() {
     setIsLoading(true)
 
     try {
-      const response = await signUp({
+      await signUp({
         name: formData.name,
         email: formData.email,
         password: formData.password
