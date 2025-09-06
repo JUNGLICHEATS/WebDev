@@ -6,3 +6,11 @@ docker-compose.yaml
 
 # Ignore other build files
 nixpacks.toml
+railway.json
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
